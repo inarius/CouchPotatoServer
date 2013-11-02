@@ -6,13 +6,13 @@ import re
 
 name_scores = [
     # Tags
-    'proper:15', 'repack:15', 'directors cut:15', 'extended:7', 'unrated:2',
+    'proper:15', 'repack:15', 'directors cut:8', 'extended:7', 'unrated:2',
     # Video
-    'x264:1', 'h264:1',
+    'x264:3', 'h264:3',
     # Audio
-    'dts:4', 'ac3:2',
+    'dts:2', 'ac3:2',
     # Quality
-    '720p:10', '1080p:10', 'bluray:10', 'dvd:1', 'dvdrip:1', 'brrip:1', 'bdrip:1', 'bd50:1', 'bd25:1',
+    '720p:2', '1080p:1', 'bluray:1', 'dvd:10', 'dvdrip:10', 'brrip:5', 'bdrip:5', 'bd50:0', 'bd25:0',
     # Language / Subs
     'german:-10', 'french:-10', 'spanish:-10', 'swesub:-20', 'danish:-10', 'dutch:-10',
     # Release groups

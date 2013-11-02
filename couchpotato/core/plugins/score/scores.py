@@ -19,7 +19,7 @@ name_scores = [
     # Quality
     '720p:2', '1080p:1', 'bluray:1', 'dvd:10', 'dvdrip:10', 'brrip:5', 'bdrip:5', 'bd50:0', 'bd25:0',
     # Language / Subs
-    'german:-10', 'french:-10', 'spanish:-10', 'swesub:-20', 'danish:-10', 'dutch:-10',
+    'german:-10', 'french:-10', 'spanish:-10', 'swesub:-20', 'danish:-10', 'dutch:-10', 'turkish:-10',
     # Release groups
     'imbt:1', 'cocain:1', 'vomit:1', 'fico:1', 'arrow:1', 'pukka:1', 'prism:1', 'devise:1', 'esir:1', 'ctrlhd:1',
     'metis:10', 'diamond:10', 'wiki:10', 'cbgb:10', 'crossbow:1', 'sinners:10', 'amiable:10', 'refined:1', 'twizted:1', 'felony:1', 'hubris:1', 'machd:1',

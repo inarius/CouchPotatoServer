@@ -1,11 +1,11 @@
 from couchpotato.core.event import addEvent
 from couchpotato.core.helpers.encoding import toUnicode
-from couchpotato.core.helpers.variable import getTitle, splitString
+from couchpotato.core.helpers.variable import getTitle, splitString, removeDuplicate
 from couchpotato.core.logger import CPLog
 from couchpotato.core.plugins.base import Plugin
 from couchpotato.core.plugins.score.scores import nameScore, nameRatioScore, \
     sizeScore, providerScore, duplicateScore, partialIgnoredScore, namePositionScore, \
-    halfMultipartScore
+    halfMultipartScore, sceneScore
 from couchpotato.environment import Env
 
 log = CPLog(__name__)
@@ -21,7 +21,7 @@ class Score(Plugin):
 
         # Merge global and category
         preferred_words = splitString(Env.setting('preferred_words', section = 'searcher').lower())
-        try: preferred_words = list(set(preferred_words + splitString(movie['category']['preferred'].lower())))
+        try: preferred_words = removeDuplicate(preferred_words + splitString(movie['category']['preferred'].lower()))
         except: pass
 
         score = nameScore(toUnicode(nzb['name']), movie['library']['year'], preferred_words)
@@ -35,8 +35,8 @@ class Score(Plugin):
         # Torrents only
         if nzb.get('seeders'):
             try:
-                score += nzb.get('seeders') / 5
-                score += nzb.get('leechers') / 10
+                score += nzb.get('seeders') * 100 / 15
+                score += nzb.get('leechers') * 100 / 30
             except:
                 pass
 
@@ -48,7 +48,7 @@ class Score(Plugin):
 
         # Merge global and category
         ignored_words = splitString(Env.setting('ignored_words', section = 'searcher').lower())
-        try: ignored_words = list(set(ignored_words + splitString(movie['category']['ignored'].lower())))
+        try: ignored_words = removeDuplicate(ignored_words + splitString(movie['category']['ignored'].lower()))
         except: pass
 
         # Partial ignored words
@@ -61,5 +61,8 @@ class Score(Plugin):
         extra_score = nzb.get('extra_score')
         if extra_score:
             score += extra_score(nzb)
+
+        # Scene / Nuke scoring
+        score += sceneScore(nzb['name'])
 
         return score

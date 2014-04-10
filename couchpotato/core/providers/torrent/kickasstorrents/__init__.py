@@ -1,5 +1,6 @@
 from .main import KickAssTorrents
 
+
 def start():
     return KickAssTorrents()
 
@@ -17,6 +18,12 @@ config = [{
                     'name': 'enabled',
                     'type': 'enabler',
                     'default': True,
+                },
+                {
+                    'name': 'domain',
+                    'advanced': True,
+                    'label': 'Proxy server',
+                    'description': 'Domain for requests, keep empty to let CouchPotato pick.',
                 },
                 {
                     'name': 'seed_ratio',
